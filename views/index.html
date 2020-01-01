@@ -1,0 +1,99 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: http://mozilla.github.io/nunjucks/ -->
+<!-- jade: http://jade-lang.com/ -->
+<!-- haml: http://haml.info/tutorial.html -->
+<!-- hbs(handlebars): http://handlebarsjs.com/expressions.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flask Full of Snakes!</title>
+    <meta name="description" content="A cool thing made with Glitch" />
+
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://gomix.com/favicon-app.ico"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Concert+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="/public/style.css" />
+    <link rel="stylesheet" href="/public/snake_styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Snake Game with Leaderboard</h1>
+      <!-- It's Obsolete, but who cares? -->
+      <marquee
+        >Who will be on the top of the leaderboard? Who will it be?</marquee
+      >
+    </header>
+
+    <main>
+      <section class="game">
+        <div id="score">0</div>
+        <canvas id="gameCanvas" width="300" height="300"></canvas>
+      </section>
+
+      <section class="formComments">
+        <p>Comments, Gripes, and Smack-Talk</p>
+        <form id="formComment">
+          <input
+            type="text"
+            id="newComment"
+            maxlength="100"
+            placeholder="Your comments and Smack-talk"
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+
+      <section>
+        <ul id="comments"></ul>
+      </section>
+
+      <section>
+        <p>Enter your name to qualify for the Leaderboard!</p>
+        <form id="formUser">
+          <input
+            id="userName"
+            type="text"
+            maxlength="100"
+            placeholder="Player One"
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+
+      <section class="listLeaders">
+        <ul id="leaders"></ul>
+      </section>
+    </main>
+
+    <footer>
+      <a href="https://glitch.com">
+        Remix this in Glitch
+      </a>
+    </footer>
+
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script
+      src="https://code.jquery.com/jquery-2.2.1.min.js"
+      integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+      crossorigin="anonymous"
+    ></script>
+    <script src="/public/client.js"></script>
+    <script src="/public/snake.js"></script>
+  </body>
+</html>
