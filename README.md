@@ -1,4 +1,4 @@
-Flask / Python Version of the default 'Dreams' project
+Flask / Python Presents the Snake Game
 ======================================================
 
 Click `"Show"` in the header to see your app live. Updates to your code will instantly deploy and update live.
@@ -16,4 +16,4 @@ On the front-end,
 - drag in `assets`, like images or music, to add them to your project
 
 
-Remixed from 'flask-hello-world' by Kenneth Reitz
+Remixed Python Flask Snake by Robin

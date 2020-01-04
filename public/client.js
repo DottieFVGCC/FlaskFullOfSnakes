@@ -6,7 +6,7 @@
 
 $(function() {
   console.log("hello world :o");
-
+  //load starting list of comments when page loads
   $.get("/comments", function(comments) {
     comments.forEach(function(comment) {
       $("<li></li>")
@@ -15,6 +15,8 @@ $(function() {
     });
   });
 
+  //add a comment to the list by posting to the server for 
+  // storage in the data list and updating the html list on client
   $("#formComment").submit(function(event) {
     event.preventDefault();
     var newComment = $("#newComment").val();
@@ -28,11 +30,17 @@ $(function() {
     });
   });
 
+  // get the current player's name, store on server, and display on client
   $("#formUser").submit(function(event) {
     event.preventDefault();
-    var user = $("#userName").val();
-    $.post("/user?" + $.param({ user: user }), function(data) {
-      alert(data);
+    var user = $("#userName").val();  
+    
+    var score = $("#score").text();
+         
+    //Pass object as parameter; server will interpret as form data
+    $.post("/user", { user: user, score: score}, function(data) {
+      alert(data);        
     });
+    
   });
 });

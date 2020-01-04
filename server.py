@@ -59,12 +59,17 @@ def comments():
 #ephemeral memory
 @app.route('/user', methods=['GET', 'POST'])
 def user():
+    global PLAYER
     # Keep current player name in memory. 
     # TO DO: update Player in index template
-    if 'user' in request.args:      
-        PLAYER = request.args['user']
+    if request.method == 'POST':
+        PLAYER = request.form['user']
+        score = request.form['score']
+    
+        #LEADERBOARD.append(PLAYER + "Score: " + highscore)
     # Return the Player Name after updating
-    return PLAYER    
+        return "Congratulations " + PLAYER + " on your score of: " + score
+    
   
 #persistant storage
 @app.route('/leaderboard', methods=['GET', 'POST'])
@@ -75,7 +80,6 @@ def leaderboard():
     
     # Return the list
     return jsonify(LEADERBOARD)
-
 
 if __name__ == '__main__':
     app.run()
