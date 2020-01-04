@@ -56,7 +56,7 @@ def comments():
     # Return the list of remembered comments. 
     return jsonify(COMMENTS)
 
-#ephemeral memory
+#User data posted to /user is in object form 
 @app.route('/user', methods=['GET', 'POST'])
 def user():
     global PLAYER
@@ -66,9 +66,10 @@ def user():
         PLAYER = request.form['user']
         score = request.form['score']
     
-        #LEADERBOARD.append(PLAYER + "Score: " + highscore)
-    # Return the Player Name after updating
+        LEADERBOARD.append(score + " Points: " + " - " + PLAYER)
+        
         return "Congratulations " + PLAYER + " on your score of: " + score
+        #return jsonify(LEADERBOARD)
     
   
 #persistant storage
