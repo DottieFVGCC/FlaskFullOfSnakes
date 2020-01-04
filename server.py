@@ -27,7 +27,7 @@ COMMENTS = ['This game is WICKED HARD.']
 LEADERBOARD = ['50 Points - Minnie Mouse']
 
 # current player stored in memory
-PLAYER = "PYTHON_FAN"
+PLAYER = "PYTHON FAN"
 
 @app.after_request
 def apply_kr_hello(response):
@@ -41,11 +41,10 @@ def apply_kr_hello(response):
     response.headers["X-Powered-By"] = os.environ.get('POWERED_BY')
     return response
 
-
 @app.route('/')
 def homepage():
     """Displays the homepage."""
-    return render_template('index.html')
+    return render_template('index.html', player=PLAYER)
     
 #ephemeral memory - broken?
 @app.route('/comments', methods=['GET', 'POST'])
@@ -61,10 +60,11 @@ def comments():
 @app.route('/user', methods=['GET', 'POST'])
 def user():
     # Keep current player name in memory. 
+    # TO DO: update Player in index template
     if 'user' in request.args:      
         PLAYER = request.args['user']
-    # Return the Player Name 
-    return PLAYER
+    # Return the Player Name after updating
+    return PLAYER    
   
 #persistant storage
 @app.route('/leaderboard', methods=['GET', 'POST'])

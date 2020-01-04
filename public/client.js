@@ -23,8 +23,8 @@ $(function() {
       $("<li></li>")
         .text(newComment)
         .appendTo("ul#comments");
-      $("input").val("");
-      $("input").focus();
+      $("#newComment").val("");
+      $("#newComment").focus();
     });
   });
 
