@@ -24,10 +24,23 @@ COMMENTS = ['This game is WICKED HARD.']
 
 # let's just keep the top 10 scores...
 #Todo: move this to persistant storage
-LEADERBOARD = ['50 Points - Minnie Mouse']
+#LEADERBOARD is a dictionary with the player name as key
+
 
 # current player stored in memory
 PLAYER = "PYTHON FAN"
+LEADERBOARD = {}
+
+def readscores():
+    global LEADERBOARD
+    with open("leaderboard.txt", 'r', newline='\n') as leader_file:
+      for line in leader_file:        
+        record = line.split("|")
+        LEADERBOARD[record[0]] = record[1] 
+
+def writescore(name, score): 
+    with open("leaderboard.txt", 'a') as leader_file:
+      leader_file.write(name + '|' + score + '|\n')     
 
 @app.after_request
 def apply_kr_hello(response):
@@ -42,8 +55,9 @@ def apply_kr_hello(response):
     return response
 
 @app.route('/')
-def homepage():
+def homepage():     
     """Displays the homepage."""
+    readscores()
     return render_template('index.html', player=PLAYER)
     
 #ephemeral memory - broken?
@@ -56,30 +70,36 @@ def comments():
     # Return the list of remembered comments. 
     return jsonify(COMMENTS)
 
-#User data posted to /user is in object form 
+#User data posted to /user is in the form obect
 @app.route('/user', methods=['GET', 'POST'])
 def user():
     global PLAYER
+    global LEADERBOARD
     # Keep current player name in memory. 
     # TO DO: update Player in index template
     if request.method == 'POST':
         PLAYER = request.form['user']
         score = request.form['score']
-    
-        LEADERBOARD.append(score + " Points: " + " - " + PLAYER)
-        
-        return "Congratulations " + PLAYER + " on your score of: " + score
-        #return jsonify(LEADERBOARD)
-    
-  
+        writescore(PLAYER, score)        
+        LEADERBOARD[PLAYER] = int(score)       
+        return "Congratulations " + PLAYER + " on your score of: " + str(LEADERBOARD[PLAYER])
+   
 #persistant storage
-@app.route('/leaderboard', methods=['GET', 'POST'])
-def leaderboard():
+#@app.route('/leaderboard', methods=['GET', 'POST'])
+#def leaderboard():
     # Add a high score to the leaderboard 
-    if 'highscore' in request.args:
-        LEADERBOARD.append(request.args['highscore'])
+    #if 'highscore' in request.args:
+    #    LEADERBOARD.append(request.args['highscore'])
     
     # Return the list
+   # return jsonify(LEADERBOARD)
+  
+#ephemeral memory - broken?
+@app.route('/leaderboard', methods=['GET', 'POST'])
+def leaderboard(): 
+    global LEADERBOARD
+    readscores()
+    # Return the list of remembered leaders and scores 
     return jsonify(LEADERBOARD)
 
 if __name__ == '__main__':

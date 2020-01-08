@@ -1,0 +1,5 @@
+Dottie|0|
+Bob|0|
+Eleanor Rigby|0|
+Mark Twain|70|
+Jeremiah the Bullfrog|20|
