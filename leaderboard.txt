@@ -21,3 +21,5 @@ Erin|0|
 Hello World|0|
 Winner Winner|0|
 Elizabeth|0|
+Stephanie|0|
+Cruella Deville|0|

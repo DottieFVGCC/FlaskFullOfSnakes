@@ -46,7 +46,10 @@ $(function() {
          
     //Pass object as parameter; server will interpret as form data
     $.post("/user", { user: user, score: score}, function(data) {
-      alert(data);        
+      alert(data); 
+       $("<li></li>")
+        .text(user + ": " + score)
+        .appendTo("ul#leaders");
     });   
   });
 });
