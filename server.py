@@ -19,11 +19,11 @@ app = Flask(__name__, static_folder='public', template_folder='views')
 # Set the app secret key from the secret environment variables.
 app.secret = os.environ.get('SECRET')
 
-# Comment database. Store in memory for now. 
+# Comment 'database'. Store in memory for now. 
 COMMENTS = ['This game is WICKED HARD.']
 
-# let's just keep the top 10 scores...
-#Todo: move this to persistant storage
+# TODO: let's just keep the top 10 scores...
+
 #LEADERBOARD is a list of player objects with name and score
 class Player:
   def __init__(self, playername, score):
@@ -38,6 +38,7 @@ PLAYER = "PYTHON FAN"
 # Read scores from the file into a list of Player Objects stored in LEADERBOARD
 def readscores():
     global LEADERBOARD
+    LEADERBOARD = []
     with open("leaderboard.txt", 'r', newline='\n') as leader_file:
       for line in leader_file:        
         record = line.split("|")
@@ -110,7 +111,7 @@ def leaderboard():
     # Return the list of remembered leaders and scores 
     results = []
     for entry in LEADERBOARD:
-      results.append(entry.playername + ':' + str(entry.score))
+      results.append(entry.playername + ': ' + str(entry.score))
     print(results)
     return jsonify(results)
 
