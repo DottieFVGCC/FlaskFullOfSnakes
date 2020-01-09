@@ -101,13 +101,18 @@ def user():
         return "Congratulations " + PLAYER + " on your score of: " + score
    
   
-#ephemeral memory - broken?
+#Refresh the in-memory LEADERBOARD with permanent data from file
+#Return formatted list to client
 @app.route('/leaderboard', methods=['GET', 'POST'])
 def leaderboard(): 
     global LEADERBOARD
     readscores()
     # Return the list of remembered leaders and scores 
-    return jsonify(LEADERBOARD[0].playername)
+    results = []
+    for entry in LEADERBOARD:
+      results.append(entry.playername + ':' + str(entry.score))
+    print(results)
+    return jsonify(results)
 
 if __name__ == '__main__':
     app.run()
