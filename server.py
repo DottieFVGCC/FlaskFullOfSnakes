@@ -24,19 +24,20 @@ COMMENTS = ['This game is WICKED HARD.']
 
 # let's just keep the top 10 scores...
 #Todo: move this to persistant storage
-#LEADERBOARD is a dictionary with the player name as key
+#LEADERBOARD is a list of dictionaries with the player name as key
 
 
 # current player stored in memory
 PLAYER = "PYTHON FAN"
-LEADERBOARD = {}
+LEADERBOARD = [{"Minnie Mouse":"100"}]
 
 def readscores():
     global LEADERBOARD
     with open("leaderboard.txt", 'r', newline='\n') as leader_file:
       for line in leader_file:        
         record = line.split("|")
-        LEADERBOARD[record[0]] = record[1] 
+        entry = {record[0]:record[1]}
+        LEADERBOARD.append(entry)
 
 def writescore(name, score): 
     with open("leaderboard.txt", 'a') as leader_file:
@@ -80,9 +81,10 @@ def user():
     if request.method == 'POST':
         PLAYER = request.form['user']
         score = request.form['score']
-        writescore(PLAYER, score)        
-        LEADERBOARD[PLAYER] = int(score)       
-        return "Congratulations " + PLAYER + " on your score of: " + str(LEADERBOARD[PLAYER])
+        writescore(PLAYER, score)  
+        newentry = {PLAYER:score}
+        LEADERBOARD.append(newentry)  
+        return "Congratulations " + PLAYER + " on your score of: " + str(score)
    
 #persistant storage
 #@app.route('/leaderboard', methods=['GET', 'POST'])

@@ -3,3 +3,13 @@ Bob|0|
 Eleanor Rigby|0|
 Mark Twain|70|
 Jeremiah the Bullfrog|20|
+Geralt the Witcher|80|
+Amanda|0|
+Tom|0|
+Monty Python|110|
+Matt|0|
+Persian Cat|0|
+Melanie|0|
+Ed|0|
+Bobby|0|
+Betsy Ross|0|
