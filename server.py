@@ -44,11 +44,13 @@ def readscores():
         record = line.split("|")
         entry = Player(record[0],int(record[1]))
         LEADERBOARD.append(entry)
+        LEADERBOARD.sort(key=lambda player: player.score, reverse=True)
         # for debugging purposes: print the entry to console
         print(entry.playername + ":" + str(entry.score))
     #for debugging purposes, print the contents of the LEADERBOARD in memory
-    readleaderboard()
+    #readleaderboard()
  
+# this function will only write to the console, can use for debugging
 def readleaderboard():
   print("Reading the Leaderboard:")
   for entry in LEADERBOARD:

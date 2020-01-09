@@ -1,5 +1,6 @@
 Flask / Python Presents the Snake Game
 ======================================================
+Remixed Python Flask Snake by Robin -- added file storage for the Leaderboard
 
 Click `"Show"` in the header to see your app live. Updates to your code will instantly deploy and update live.
 
@@ -15,5 +16,4 @@ On the front-end,
 - edit `client.js`, `style.css` and `index.html`
 - drag in `assets`, like images or music, to add them to your project
 
-
-Remixed Python Flask Snake by Robin
+ 
