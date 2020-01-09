@@ -50,13 +50,24 @@ def readscores():
         LEADERBOARD.sort(key=lambda player: player.score, reverse=True)
         # for debugging purposes: print the entry to console
         print(entry.playername + ":" + str(entry.score))
-      HIGHSCORE = LEADERBOARD[0].score
-      QUALIFYINGSCORE = LEADERBOARD[9].score
-      print("High Score: " + str(HIGHSCORE) + " Qualifying Score: " + str(QUALIFYINGSCORE))
-    
-    #for debugging purposes, print the contents of the LEADERBOARD in memory
+      
+    filterLeaderboard()  
     #readleaderboard()
- 
+    
+def filterLeaderboard():
+    global LEADERBOARD
+    global HIGHSCORE
+    global QUALIFYINGSCORE
+    
+    HIGHSCORE = LEADERBOARD[0].score
+    QUALIFYINGSCORE = LEADERBOARD[9].score
+    print("High Score: " + str(HIGHSCORE) + " Qualifying Score: " + str(QUALIFYINGSCORE))
+    qualified_scores = []
+    for entry in LEADERBOARD:
+      if entry.score >= QUALIFYINGSCORE:
+        qualified_scores.append(entry)
+    LEADERBOARD = qualified_scores
+
 # this function will only write to the console, can use for debugging
 def readleaderboard():
   print("Reading the Leaderboard:")
