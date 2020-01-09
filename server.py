@@ -24,19 +24,23 @@ COMMENTS = ['This game is WICKED HARD.']
 
 # let's just keep the top 10 scores...
 #Todo: move this to persistant storage
-#LEADERBOARD is a list of dictionaries with the player name as key
-
-
+#LEADERBOARD is a list of player objects with name and score
+class Player:
+  def __init__(self, playername, score):
+    self.playername = playername
+    self.score = score
+LEADERBOARD = [Player("Mickey Mouse", 100), Player("Petunia Pig", 50 )]  
+    
 # current player stored in memory
 PLAYER = "PYTHON FAN"
-LEADERBOARD = [{"Minnie Mouse":"100"}]
 
+# Read scores from the file into a list of Player Objects stored in LEADERBOARD
 def readscores():
     global LEADERBOARD
     with open("leaderboard.txt", 'r', newline='\n') as leader_file:
       for line in leader_file:        
         record = line.split("|")
-        entry = {record[0]:record[1]}
+        entry = Player(record[0],int(record[1]))
         LEADERBOARD.append(entry)
 
 def writescore(name, score): 
@@ -81,20 +85,11 @@ def user():
     if request.method == 'POST':
         PLAYER = request.form['user']
         score = request.form['score']
-        writescore(PLAYER, score)  
-        newentry = {PLAYER:score}
-        LEADERBOARD.append(newentry)  
-        return "Congratulations " + PLAYER + " on your score of: " + str(score)
+        writescore(PLAYER, score) 
+        LEADERBOARD.append(Player(PLAYER, int(score))) 
+        
+        return "Congratulations " + PLAYER + " on your score of: " + score
    
-#persistant storage
-#@app.route('/leaderboard', methods=['GET', 'POST'])
-#def leaderboard():
-    # Add a high score to the leaderboard 
-    #if 'highscore' in request.args:
-    #    LEADERBOARD.append(request.args['highscore'])
-    
-    # Return the list
-   # return jsonify(LEADERBOARD)
   
 #ephemeral memory - broken?
 @app.route('/leaderboard', methods=['GET', 'POST'])
