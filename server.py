@@ -29,6 +29,7 @@ class Player:
   def __init__(self, playername, score):
     self.playername = playername
     self.score = score
+    
 LEADERBOARD = [Player("Mickey Mouse", 100), Player("Petunia Pig", 50 )]  
     
 # current player stored in memory
@@ -42,6 +43,15 @@ def readscores():
         record = line.split("|")
         entry = Player(record[0],int(record[1]))
         LEADERBOARD.append(entry)
+        # for debugging purposes: print the entry to console
+        print(entry.playername + ":" + str(entry.score))
+    #for debugging purposes, print the contents of the LEADERBOARD in memory
+    readleaderboard()
+ 
+def readleaderboard():
+  print("Reading the Leaderboard:")
+  for entry in LEADERBOARD:
+    print(entry.playername + str(entry.score))
 
 def writescore(name, score): 
     with open("leaderboard.txt", 'a') as leader_file:
@@ -97,7 +107,7 @@ def leaderboard():
     global LEADERBOARD
     readscores()
     # Return the list of remembered leaders and scores 
-    return jsonify(LEADERBOARD)
+    return jsonify(LEADERBOARD[0].playername)
 
 if __name__ == '__main__':
     app.run()
