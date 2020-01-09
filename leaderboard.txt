@@ -4,22 +4,23 @@ Eleanor Rigby|0|
 Mark Twain|70|
 Jeremiah the Bullfrog|20|
 Geralt the Witcher|80|
-Amanda|0|
+Amanda|20|
 Tom|0|
 Monty Python|110|
 Matt|0|
-Persian Cat|0|
+Persian Cat|10|
 Melanie|0|
 Ed|0|
 Bobby|0|
 Betsy Ross|0|
-Beverly|0|
+Beverly|30|
 Luke|0|
 Betty|0|
-Hello|0|
-Erin|0|
+Hello|70|
+Erin|10|
 Hello World|0|
 Winner Winner|0|
-Elizabeth|0|
+Elizabeth|30|
 Stephanie|0|
 Cruella Deville|0|
+Elliot Ness|0|

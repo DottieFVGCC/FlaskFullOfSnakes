@@ -32,6 +32,9 @@ class Player:
     
 LEADERBOARD = [Player("Mickey Mouse", 100), Player("Petunia Pig", 50 )]  
     
+HIGHSCORE = 0
+QUALIFYINGSCORE = 0
+
 # current player stored in memory
 PLAYER = "PYTHON FAN"
 
@@ -47,6 +50,10 @@ def readscores():
         LEADERBOARD.sort(key=lambda player: player.score, reverse=True)
         # for debugging purposes: print the entry to console
         print(entry.playername + ":" + str(entry.score))
+      HIGHSCORE = LEADERBOARD[0].score
+      QUALIFYINGSCORE = LEADERBOARD[9].score
+      print("High Score: " + str(HIGHSCORE) + " Qualifying Score: " + str(QUALIFYINGSCORE))
+    
     #for debugging purposes, print the contents of the LEADERBOARD in memory
     #readleaderboard()
  
