@@ -1,6 +1,6 @@
 Flask / Python Presents the Snake Game
 ======================================================
-Remixed Python Flask Snake by Robin -- added file storage for the Leaderboard
+Remixed Python Flask Snake by Robin Shroeder -- added persistent storage for the Leaderboard
 
 Click `"Show"` in the header to see your app live. Updates to your code will instantly deploy and update live.
 

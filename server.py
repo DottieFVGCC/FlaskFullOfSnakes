@@ -67,6 +67,8 @@ def filterLeaderboard():
       if entry.score >= QUALIFYINGSCORE:
         qualified_scores.append(entry)
     LEADERBOARD = qualified_scores
+    
+    #TODO: rewrite file to only keep the qualifying scores
 
 # this function will only write to the console, can use for debugging
 def readleaderboard():

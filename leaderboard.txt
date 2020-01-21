@@ -26,3 +26,6 @@ Cruella Deville|0|
 Elliot Ness|0|
 Dottie|30|
 Dottie|30|
+Harry Potter|30|
+Marion the Libararian|0|
+Shrek|10|
