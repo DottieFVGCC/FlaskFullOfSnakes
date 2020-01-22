@@ -18,7 +18,7 @@ $(function() {
   $.get("/leaderboard", function(leaders) {
     leaders.forEach(function(leader) {
       $("<li></li>")
-        .text(leader)
+        .text(leader + "🏆")
         .appendTo("ul#leaders");
     });
   });
